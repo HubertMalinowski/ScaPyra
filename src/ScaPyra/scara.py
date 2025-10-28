@@ -10,7 +10,7 @@ from .geometry import find_circle_intersections, calculate_angle, select_interse
 class SCARAController:
     def __init__(
         self,
-        pwm: Any = PCA9685(0x40, debug=False).setPWMFreq(50),
+        pwm: Any = PCA9685(0x40, debug=False),
         motor1_channel: int = 0,
         motor2_channel: int = 1,
         lift_servo_channel: int = 2,
@@ -26,6 +26,7 @@ class SCARAController:
         motor2_angle_offset: float = 214.0,
     ) -> None:
         self.pwm: Any = pwm
+        self.pwm.setPWMFreq(50)
         self.motor1_channel: int = motor1_channel
         self.motor2_channel: int = motor2_channel
         self.lift_servo_channel: int = lift_servo_channel
