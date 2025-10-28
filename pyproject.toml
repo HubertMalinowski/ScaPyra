@@ -3,7 +3,7 @@ name = "scapyra"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11,<3.13"
 dependencies = [
     "numpy>=2.3.4",
     "pytest>=8.4.2",
