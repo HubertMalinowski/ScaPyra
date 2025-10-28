@@ -1,6 +1,1 @@
-from .scara import SCARAController
-
-
-__all__ = [
-    "SCARAController"
-]
+__version__ = "0.1.0"
