@@ -1,7 +1,6 @@
-from ast import Dict
 import math
 import time
-from typing import Any, Optional
+from typing import Any, Dict, Optional
 import numpy as np
 
 from .driver import PCA9685
