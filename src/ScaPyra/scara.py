@@ -47,7 +47,21 @@ class SCARAController:
         self.x2: float = engine_spacing / 2
         self.y2: float = -50.0
 
-    def angle_to_pulse(self, angle, motor):
+    def angle_to_pulse(self, angle: float, motor: str) -> int:
+        """ Angle to pulse for given motor
+        
+        Parameters:
+        -----------
+        angle : float
+            angle to be set
+        motor: str
+            chosen motor
+
+        Returns:
+        --------
+        int
+            pulse 
+        """
         if motor == "motor1":
             angle_offset = self.motor1_angle_offset
         elif motor == "motor2":

@@ -4,6 +4,13 @@ import sys
 app = typer.Typer(help="CLI for controlling the SCARA robot using PCA9685 driver.")
 
 @app.command()
+def status():
+    """Show current TCP position and servo state."""
+    from ScaPyra.scara import SCARAController
+    scara = SCARAController()
+    typer.echo(f"Current position: X={scara.x:.2f}, Y={scara.y:.2f}")
+
+@app.command()
 def move(x: float, y: float):
     """Move robot TCP to absolute position (x, y)."""
     from ScaPyra.scara import SCARAController
@@ -52,11 +59,13 @@ def lower(time: float = 5.0, pulse: int = 1610):
         sys.exit(1)
 
 @app.command()
-def status():
-    """Show current TCP position and servo state."""
+def set_angle(angle: int, motor: str):
+    """Set angle on chosen motor"""
     from ScaPyra.scara import SCARAController
     scara = SCARAController()
-    typer.echo(f"Current position: X={scara.x:.2f}, Y={scara.y:.2f}")
+    pulse = scara.angle_to_pulse(angle=angle, motor=motor)
+    scara.pwm.setServoPulse(scara.motor1_channel, pulse)
+    typer.echo("Done")
 
 if __name__ == "__main__":
     app()
