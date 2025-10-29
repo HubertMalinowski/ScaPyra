@@ -64,7 +64,10 @@ def set_angle(angle: int, motor: str):
     from ScaPyra.scara import SCARAController
     scara = SCARAController()
     pulse = scara.angle_to_pulse(angle=angle, motor=motor)
-    scara.pwm.setServoPulse(scara.motor1_channel, pulse)
+    if motor == "motor1":
+        scara.pwm.setServoPulse(scara.motor1_channel, pulse)
+    elif motor == "motor2":
+        scara.pwm.setServoPulse(scara.motor2_channel, pulse)
     typer.echo("Done")
 
 if __name__ == "__main__":
