@@ -21,3 +21,6 @@ authors = [
 [project.urls]
 Homepage = "https://github.com/HubertMalinowski/ScaPyra"
 Repository = "https://github.com/HubertMalinowski/ScaPyra"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scapyra"]
