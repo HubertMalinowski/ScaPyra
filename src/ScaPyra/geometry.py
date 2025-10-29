@@ -67,7 +67,8 @@ def find_circle_intersections(
 
 
 def select_intersection_point(
-    intersections: Optional[np.ndarray]
+    intersections: Optional[np.ndarray],
+    prefer_left: bool = True
 ) -> Optional[np.ndarray]:
     """
     Selects one of two intersection points returned by find_circle_intersections().
@@ -76,6 +77,9 @@ def select_intersection_point(
     ----------
     intersections : np.ndarray | None
         Array of shape (2, 2) containing two intersection points, or None.
+    prefer_left : bool, default=True
+        If True, select the point with smaller x-coordinate (leftmost).
+        If False, select the point with larger x-coordinate (rightmost).
 
     Returns
     -------
@@ -88,7 +92,11 @@ def select_intersection_point(
     if intersections.shape != (2, 2):
         return None
 
-    idx = np.argmin(intersections[:, 0])
+    if prefer_left:
+        idx = np.argmin(intersections[:, 0])
+    else:
+        idx = np.argmax(intersections[:, 0])
+
     return intersections[idx]
 
 def calculate_angle(

@@ -49,7 +49,7 @@ class SCARAController:
 
     def angle_to_pulse(self, angle: float, motor: str) -> int:
         """ Angle to pulse for given motor
-        
+
         Parameters:
         -----------
         angle : float
@@ -114,8 +114,8 @@ class SCARAController:
         if intersections1 is None or intersections2 is None:
             return None
 
-        selected_intersection1 = select_intersection_point(intersections1)
-        selected_intersection2 = select_intersection_point(intersections2)
+        selected_intersection1 = select_intersection_point(intersections1, prefer_left=True)
+        selected_intersection2 = select_intersection_point(intersections2, prefer_left=False)
 
         if selected_intersection1 is None or selected_intersection2 is None:
             return None
