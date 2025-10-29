@@ -9,6 +9,3 @@ dependencies = [
     "pytest>=8.4.2",
     "typer>=0.20.0",
 ]
-
-[project.scripts]
-scapyra = "ScaPyra.cli:app"
